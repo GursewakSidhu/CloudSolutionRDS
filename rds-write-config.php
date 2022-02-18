@@ -17,12 +17,14 @@
       <div class="jumbotron">
 
       <?php
+        ini_set('display_errors', 'On');
+        error_reporting(E_ALL | E_STRICT);
         $ep = $_POST['endpoint'];
       	$ep = str_replace(":3306", "", $ep);
       	$db = $_POST['database'];
         $un = $_POST['username'];
         $pw = $_POST['password'];
-
+        
         $mysql_command = "mysql -u $un -p$pw -h $ep $db < sql/addressbook.sql";
 
         $connect = mysql_connect($ep, $un, $pw);
